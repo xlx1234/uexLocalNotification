@@ -18,18 +18,21 @@ public class EAlarmReceiver extends BroadcastReceiver {
 
 	public static final Hashtable<String, Integer> INTERVAL;
 	public static final Hashtable<String, String> ALARM_ACTIONS;
-	
+    public static boolean isTableLoaded =false;
+
 	@Override
 	public void onReceive(Context context, Intent intent) {
+        if (!isTableLoaded){
+            loadTable(context);
+        }
 		if(null != intent){
 			String action = intent.getAction();
-			Log.i("action", "action="+action);
-			if(ALARM_ACTIONS.contains(action)){
+			if(ALARM_ACTIONS!=null&&ALARM_ACTIONS.contains(action)){
 				CPUWakeLock.acquireCpuWakeLock(context);
 				Alerm alerm = (Alerm) intent.getSerializableExtra(Const.KEY_DATA);
 				SNotification.notification(context, alerm);
 				CPUWakeLock.releaseCpuLock();
-			}else if(Const.BC_ACTION.equals(action) 
+			}else if(Const.BC_ACTION.equals(action)
 					|| Const.TC_ACTION.equals(action)
 					|| Const.TZ_ACTION.equals(action)
 					|| Const.LC_ACTION.equals(action)){
@@ -37,6 +40,18 @@ public class EAlarmReceiver extends BroadcastReceiver {
 			}
 		}
 	}
+
+    public static void loadTable(Context context){
+        SharedPreferences sp = context.getSharedPreferences(Const.ALARM_SP, Context.MODE_PRIVATE);
+        Map<String, String> tempMap= (Map<String, String>) sp.getAll();
+        for(Map.Entry<String, String> entry : tempMap.entrySet()) {
+            String ac = entry.getKey();
+            if(null != ac && 0 != ac.trim().length()){
+                ALARM_ACTIONS.put(ac,ac);
+            }
+        }
+        isTableLoaded=true;
+    }
 
 	public static void enableNextAlert(Context context, Alerm oldAlerm) {
 
@@ -278,5 +293,8 @@ public class EAlarmReceiver extends BroadcastReceiver {
 		INTERVAL.put("once", Alerm.DATE_MODE_ONCE);
 		
 		ALARM_ACTIONS = new Hashtable<String, String>();
+        isTableLoaded =false;
 	}
+
+
 }
