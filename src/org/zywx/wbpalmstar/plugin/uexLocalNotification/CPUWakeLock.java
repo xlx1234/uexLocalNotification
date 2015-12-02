@@ -8,6 +8,7 @@ import android.os.PowerManager;
 public class CPUWakeLock {
 
     private static PowerManager.WakeLock sCpuWakeLock;
+
     public static void acquireCpuWakeLock(Context context) {
         if (sCpuWakeLock != null) {
             return;
