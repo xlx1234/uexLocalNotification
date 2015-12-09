@@ -5,8 +5,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.provider.MediaStore.Audio;
 import android.util.Log;
 
 import org.zywx.wbpalmstar.engine.EBrowserActivity;
@@ -27,15 +25,7 @@ public class SNotification {
         Notification notification = new Notification(iconId, alerm.title,
                 System.currentTimeMillis());
         notification.flags = Notification.FLAG_AUTO_CANCEL;
-        String ringName = alerm.mode;
-        if (null != ringName && 0 != ringName.length()) {
-            if (ringName.equals("system")) {
-                notification.sound = Uri.withAppendedPath(
-                        Audio.Media.INTERNAL_CONTENT_URI, "6"); // 系统铃声
-            } else if (ringName.equals("default")) {
-                notification.defaults |= Notification.DEFAULT_SOUND; // 默认铃声
-            }
-        }
+        notification.defaults |= Notification.DEFAULT_SOUND; // 默认铃声
         notification.setLatestEventInfo(context, alerm.title, alerm.content,
                 contentIntent);
         NotificationManager mMgr = (NotificationManager) context
