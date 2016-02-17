@@ -110,7 +110,7 @@ public class EAlarmReceiver extends BroadcastReceiver {
         } else {
             am.setRepeating(AlarmManager.RTC_WAKEUP, alerm.start_time, next, pi);
         }
-        System.out.println(alerm.start_time + "----------------" + next);
+        System.out.println(formatDate(alerm.start_time) + "----------------" + formatDate(next));
         System.out.println(alerm.start_time - next + "======");
     }
 

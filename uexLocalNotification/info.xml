@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
     <plugin
-        build="8" uexName="uexLocalNotification" version="3.0.8">
-        <info>8:修复部分机型通知没有提示音的问题</info>
+        uexName="uexLocalNotification" version="3.0.9" build="9" >
+        <info>9:修复删除指定本地通知失败的问题</info>
+        <build>8:修复部分机型通知没有提示音的问题</build>
         <build>7:解决部分机型闪退的问题</build>
         <build>6:修复应用在后台被杀后无法通知的问题</build>
         <build>5:解决查看通知后通知不关闭的问题，解决不能删除本地通知的问题</build>

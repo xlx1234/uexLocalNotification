@@ -73,7 +73,7 @@ public class EUexLocalNotify extends EUExBase {
 
     public void remove(String[] parm) {
         String nId = parm[0];
-        EAlarmReceiver.cancelAlerm(mContext, nId + mContext.getPackageName());
+        EAlarmReceiver.cancelAlerm(mContext, nId);
         if (map != null && map.containsKey(nId)) {
             int id = map.get(nId);
             map.remove(nId);
