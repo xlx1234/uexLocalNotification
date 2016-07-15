@@ -1,46 +1,19 @@
 <manifest package="org.zywx.wbpalmstar.widgetone.uexlocalnotification"
-          xmlns:android="http://schemas.android.com/apk/res/android"
-          android:versionCode="1"
-          android:versionName="1.0">
-
-    <uses-sdk
-        android:minSdkVersion="8"
-        />
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name="org.zywx.wbpalmstar.widgetone.WidgetOneApplication"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/icon"
         android:label="@string/app_name">
-        <activity
-            android:name="org.zywx.wbpalmstar.engine.EBrowserActivity"
-            android:alwaysRetainTaskState="true"
-            android:configChanges="keyboardHidden|orientation"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/browser_main_theme"
-            android:windowSoftInputMode="stateHidden|adjustPan" >
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="appcanscheme"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name="org.zywx.wbpalmstar.engine.TempActivity"
-                  android:launchMode="standard"
-                  android:screenOrientation="portrait"
-                  android:theme="@style/browser_loading_theme"/>
         <activity android:name="org.zywx.wbpalmstar.engine.LoadingActivity"
                   android:configChanges="keyboardHidden|orientation"
-                  android:theme="@style/browser_loading_theme"
-                  android:screenOrientation="portrait"
                   android:launchMode="standard"
-            >
+                  android:screenOrientation="portrait"
+                  android:theme="@style/browser_loading_theme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <!-- uexLocalNotify -->

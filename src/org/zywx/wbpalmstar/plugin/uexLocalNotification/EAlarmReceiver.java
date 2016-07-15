@@ -36,6 +36,14 @@ public class EAlarmReceiver extends BroadcastReceiver {
                 Alerm alerm = DataHelper.gson.fromJson(alermJson, Alerm.class);
                 SNotification.notification(context, alerm);
                 CPUWakeLock.releaseCpuLock();
+                if (alerm != null && EUexLocalNotify.mLocalNotiCallback != null){
+                    CallbackResultVO resultVO = new CallbackResultVO(
+                            alerm.notifyId,
+                            alerm.content,
+                            alerm.extras);
+                    EUexLocalNotify.mLocalNotiCallback.onMessage(resultVO);
+                }
+
             } else if (Const.BC_ACTION.equals(action)
                     || Const.TC_ACTION.equals(action)
                     || Const.TZ_ACTION.equals(action)
@@ -90,7 +98,7 @@ public class EAlarmReceiver extends BroadcastReceiver {
         SharedPreferences sp = context.getSharedPreferences(Const.ALARM_SP, Context.MODE_PRIVATE);
         Editor edit = sp.edit();
         edit.putString(action, alerm.toJson());
-        edit.commit();
+        edit.apply();
     }
 
     public static void setAlerm(Context context, Alerm alerm) {

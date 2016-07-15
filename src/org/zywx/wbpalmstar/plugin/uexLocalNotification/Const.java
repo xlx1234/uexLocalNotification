@@ -9,4 +9,8 @@ public class Const {
     public static final String LC_ACTION = "android.intent.action.LOCALE_CHANGED";
     public static final String ALARM_SP = "alarm_sp";
     public static final String KEY_RING = "ring_id";
+
+    public static final String ON_MESSAGE = "uexLocalNotification.onMessage";
+    public static final String ON_ACTIVE = "uexLocalNotification.onActive";
+    public static final String ACTION_TAG = "uexLocalNotification.notification";
 }
