@@ -31,9 +31,9 @@ public class Alerm implements Serializable {
     public int day_of_year;
     public String interval;
     public long start_time;
-    ;
     public String ringName;
     public String mode;
+    public String extras;
 
     public Alerm() {
         ;
@@ -130,6 +130,7 @@ public class Alerm implements Serializable {
             json.put("day_of_year", day_of_year);
             json.put("interval", interval);
             json.put("ringName", ringName);
+            json.put("extras", extras);
             json.put("start_time", start_time);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -154,6 +155,7 @@ public class Alerm implements Serializable {
             alerm.interval = json.optString("interval");
             alerm.ringName = json.optString("ringName");
             alerm.start_time = json.optLong("start_time");
+            alerm.extras = json.optString("extras");
         } catch (Exception e) {
             e.printStackTrace();
         }

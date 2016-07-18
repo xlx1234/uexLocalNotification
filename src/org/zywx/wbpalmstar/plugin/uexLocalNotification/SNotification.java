@@ -18,6 +18,8 @@ public class SNotification {
     public static void notification(Context context, Alerm alerm) {
         Log.e("==notification==", "===notification=start=");
         Intent notyIntent = new Intent(context, EBrowserActivity.class);
+        notyIntent.setAction(Const.ACTION_TAG);
+        notyIntent.setPackage(context.getPackageName());
         notyIntent.putExtra(Const.KEY_DATA, alerm);
         PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
                 notyIntent, PendingIntent.FLAG_UPDATE_CURRENT);
