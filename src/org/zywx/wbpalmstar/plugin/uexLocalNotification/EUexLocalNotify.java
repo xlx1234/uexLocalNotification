@@ -170,7 +170,7 @@ public class EUexLocalNotify extends EUExBase {
         String js = SCRIPT_HEADER + "if(" + methodName + "){" + methodName +
                 "('" + resultVO.getId() + "','" + resultVO.getMessage() + "','" +
                 resultVO.getExtras() + "'" + SCRIPT_TAIL;
-        BDebug.i(TAG_LOG, "callbackPlugin2Js:" + js);
+        BDebug.logToFile(TAG_LOG, "callbackPlugin2Js:" + js);
         evaluateScript("root", 0, js);
     }
 
