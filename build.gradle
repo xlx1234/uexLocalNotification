@@ -64,6 +64,8 @@ android {
 
         defaultConfig {
             minSdkVersion 14
+            applicationId "org.zywx.wbpalmstar.widgetone.uexLocalNotification"
+            multiDexEnabled true
         }
     }
     compileOptions {
