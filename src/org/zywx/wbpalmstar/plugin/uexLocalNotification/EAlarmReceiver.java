@@ -102,7 +102,7 @@ public class EAlarmReceiver extends BroadcastReceiver {
     }
 
     public static void setAlerm(Context context, Alerm alerm) {
-        int dateMode = alerm.getMode();
+        int dateMode = alerm.getInterval();
         String startTime = alerm.getStartTime();
         String dateValue = alerm.getDateValue();
         long next = computeNextAlarm(dateMode, dateValue, startTime);

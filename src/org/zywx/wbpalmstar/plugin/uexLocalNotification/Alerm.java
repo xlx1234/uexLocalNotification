@@ -75,7 +75,7 @@ public class Alerm implements Serializable {
 
     public String getDateValue() {
         String result = null;
-        int mode = getMode();
+        int mode = getInterval();
         switch (mode) {
             case DATE_MODE_FIX:
                 result = formatDate(start_time);
@@ -111,8 +111,11 @@ public class Alerm implements Serializable {
         return result;
     }
 
-    public int getMode() {
+    public String getMode() {
+        return mode;
+    }
 
+    public int getInterval() {
         return EAlarmReceiver.guessMode(interval);
     }
 
