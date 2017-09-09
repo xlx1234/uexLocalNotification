@@ -36,6 +36,7 @@ public class SNotification {
                 contentIntent);
         NotificationManager mMgr = (NotificationManager) context
                 .getSystemService(Context.NOTIFICATION_SERVICE);
+        mId = alerm.notifyId.hashCode();
         mMgr.notify(mId, notification);
         EUexLocalNotify.addToMap(alerm.notifyId, mId);
         Log.e("==notification==", "===notification=end=");
