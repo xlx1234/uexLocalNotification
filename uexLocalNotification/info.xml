@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <uexplugins>
     <plugin
-        uexName="uexLocalNotification" version="4.0.0" build="0" >
-        <info>0:4.0</info>
+        uexName="uexLocalNotification" version="4.0.3" build="1" >
+        <into>1:推送后第二次点击消息没有反应问题</into>
+        <build>0:4.0</build>
     </plugin>
 </uexplugins>

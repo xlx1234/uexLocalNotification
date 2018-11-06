@@ -5,7 +5,6 @@ import android.app.Activity;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
 import android.util.Log;
 
 import org.zywx.wbpalmstar.base.BDebug;
@@ -29,6 +28,7 @@ public class EUexLocalNotify extends EUExBase {
         super(context, inParent);
         notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
         initLocalNotiCallback();
+
     }
 
     public static void onActivityCreate(Context context) {
@@ -69,18 +69,20 @@ public class EUexLocalNotify extends EUExBase {
     }
 
     private void initLocalNotiCallback() {
-        mLocalNotiCallback = new LocalNotiCallback(){
+        if (mLocalNotiCallback==null){
+            mLocalNotiCallback = new LocalNotiCallback(){
 
-            @Override
-            public void onMessage(CallbackResultVO resultVO) {
-                callbackPlugin2Js(Const.ON_MESSAGE, resultVO);
-            }
+                @Override
+                public void onMessage(CallbackResultVO resultVO) {
+                    callbackPlugin2Js(Const.ON_MESSAGE, resultVO);
+                }
 
-            @Override
-            public void onActive(CallbackResultVO resultVO) {
-                callbackPlugin2Js(Const.ON_ACTIVE, resultVO);
-            }
-        };
+                @Override
+                public void onActive(CallbackResultVO resultVO) {
+                    callbackPlugin2Js(Const.ON_ACTIVE, resultVO);
+                }
+            };
+        }
     }
 
     public static void addToMap(String notifyId, int id) {

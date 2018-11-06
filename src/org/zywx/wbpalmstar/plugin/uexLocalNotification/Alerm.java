@@ -36,7 +36,7 @@ public class Alerm implements Serializable {
     public String extras;
 
     public Alerm() {
-        ;
+
     }
 
     public void setStartTime(long s) {
